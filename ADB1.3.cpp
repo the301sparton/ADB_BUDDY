@@ -2,12 +2,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h> 
+#include <time.h>
 using namespace std;
 class device
 {
 	private:
 		
 	public:
+		void logit(char str[])
+{
+	FILE *fp;
+	fp=fopen("log-ADB_BUDDY.log","a+");
+	char buff[20];
+	struct tm *sTm;
+	time_t now=time(0);
+	sTm = gmtime(&now);
+	strftime(buff,sizeof(buff),"%Y-%m-%d %H:%M:%S",sTm);
+	fprintf(fp,"%s -- %s\n",buff,str);
+	fclose(fp);
+	
+}
     void devchk()
 	{	
 	cout<<"Cheaking Device Connected..\n";
@@ -44,6 +58,7 @@ class device
 		}
 		puts(bstr);
 		system(bstr);
+		logit(bstr);
 	}
 	void restore()
 	{
@@ -55,16 +70,19 @@ class device
 		puts(rstr);
 		getch();
 		system(rstr);
+		logit(rstr);
 	}
 	void rreboot()
 	{
 		system("adb reboot recovery");
+		logit("adb reboot recovery");
 	}
 	void breboot()
 	{
 		system("adb reboot bootloader");
 		system("fastboot devices");
 		system("fastboot flashing get_unlock_ability");
+		logit("adb reboot bootloader");
 	}
 	void install()
 	{
@@ -84,6 +102,8 @@ class device
 		cout<<"Enter Location Of APK: ";
 		cin>>apkloc;
 		strcat(str,apkloc);
+		system(str);
+		logit(str);
 	}
 	
 };

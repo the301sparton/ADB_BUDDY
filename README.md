@@ -7,3 +7,7 @@ added reboot recovery
 added reboot bootloader
 added install packages
 added repatation 
+
+15/2/2017
+added Loging in device class.
+fixed install package (missing system command)

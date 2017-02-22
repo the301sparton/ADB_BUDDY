@@ -74,15 +74,17 @@ class device
 	}
 	void rreboot()
 	{
-		system("adb reboot recovery");
-		logit("adb reboot recovery");
+		char str[23]={"adb reboot recovery"};
+		system(str);
+		logit(str);
 	}
 	void breboot()
 	{
-		system("adb reboot bootloader");
+		char str[23]={"adb reboot bootloader"};
+		system(str);
 		system("fastboot devices");
 		system("fastboot flashing get_unlock_ability");
-		logit("adb reboot bootloader");
+		logit(str);
 	}
 	void install()
 	{

@@ -1,4 +1,4 @@
-
+reboot 
 # ADB_BUDDY
 Simple Fungtionalities With ADB
 
@@ -16,3 +16,4 @@ fixed install package (missing system command)
 22/2/2017
 added adb push
 added adb pull
+reboot log issue fixed.

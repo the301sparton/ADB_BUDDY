@@ -9,7 +9,7 @@ class device
 	private:
 		
 	public:
-		void logit(char str[])
+	void logit(char str[])
 {
 	FILE *fp;
 	fp=fopen("log-ADB_BUDDY.log","a+");
@@ -104,6 +104,34 @@ class device
 		strcat(str,apkloc);
 		system(str);
 		logit(str);
+	
 	}
 	
+	void push()
+	{
+		char floc[100],rloc[200],str[300]={"adb push -p "};
+		cout<<"Enter Location Of Local File";
+		cin>>floc;
+		strcat(str,floc);
+		cout<<"Enter Remote Location";
+		cin>>rloc;
+		strcat(str, " ");
+		strcat(str,rloc);
+		system(str);
+		logit(str);
+	}
+	
+	void pull()
+	{
+		char floc[100],rloc[200],str[300]={"adb pull -p "};
+		cout<<"Enter Location Of Remote File";
+		cin>>floc;
+		strcat(str,floc);
+		cout<<"Enter Local Location";
+		cin>>rloc;
+		strcat(str, " ");
+		strcat(str,rloc);
+		system(str);
+		logit(str);	
+	}
 };

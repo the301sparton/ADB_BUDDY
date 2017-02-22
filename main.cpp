@@ -13,6 +13,8 @@ void getcho()
 		cout<<"Press 3 To Reboot In Recovery\n";
 		cout<<"Press 4 To Reboot In Bootloader\n";
 		cout<<"Press 5 To Install A Package\n";
+		cout<<"Press 6 To Push Files\n";
+		cout<<"Press 7 to Pull Files\n";
 		cout<<"Choice: ";
 		cin>>cho;
 		if(cho==1)
@@ -34,6 +36,14 @@ void getcho()
 		else if(cho==5)
 		{
 			plus.install();
+		}
+		else if(cho==6)
+		{
+			plus.push();
+		}
+		else if(cho==7)
+		{
+			plus.pull();
 		}
 		else
 		{

@@ -1,6 +1,12 @@
+
 reboot 
 # ADB_BUDDY
 Simple Fungtionalities With ADB
+
+#Build Instructions
+Download/Clone the Repository (master branch)
+make sure you have all the libraries included in ADB1.3.cpp and main.cpp
+compile with GNU G++/GCC.
 
 #Change Log
 13/2/2017
@@ -17,3 +23,7 @@ fixed install package (missing system command)
 added adb push
 added adb pull
 reboot log issue fixed.
+
+25/2/2017
+added adb shell
+some random bug fixed.

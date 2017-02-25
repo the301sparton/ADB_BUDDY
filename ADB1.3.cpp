@@ -1,13 +1,14 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <conio.h> 
 #include <time.h>
+
 using namespace std;
 class device
 {
-	private:
-		
+	private:		
 	public:
 	void logit(char str[])
 {
@@ -135,5 +136,22 @@ class device
 		strcat(str,rloc);
 		system(str);
 		logit(str);	
+	}
+	void shellcmd()
+	{
+		char get[220];
+		cout<<"\t\tEnter 'DONE()' To End Shell Session\n";
+		for(int a=1;strcmp(get,"DONE()")!=0;a++)
+		{
+			if(a==1)
+			{
+				cin.getline(get,220);
+			}
+			cout<<"#";
+			cin.getline(get,220);
+			char cmd[200]="adb shell ";
+			strcat(cmd,get);
+			system(cmd);
+		}
 	}
 };

@@ -14,7 +14,8 @@ void getcho()
 		cout<<"Press 4 To Reboot In Bootloader\n";
 		cout<<"Press 5 To Install A Package\n";
 		cout<<"Press 6 To Push Files\n";
-		cout<<"Press 7 to Pull Files\n";
+		cout<<"Press 7 To Pull Files\n";
+		cout<<"Press 8 To Start Shell Session\n\n";
 		cout<<"Choice: ";
 		cin>>cho;
 		if(cho==1)
@@ -44,6 +45,10 @@ void getcho()
 		else if(cho==7)
 		{
 			plus.pull();
+		}
+		else if(cho==8)
+		{
+			plus.shellcmd();
 		}
 		else
 		{

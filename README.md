@@ -13,7 +13,7 @@ compile with GNU G++/GCC.
 added reboot recovery
 added reboot bootloader
 added install packages
-added repatation 
+added DO while(1)
 
 15/2/2017
 added Loging in device class.

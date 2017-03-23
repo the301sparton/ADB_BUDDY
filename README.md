@@ -27,3 +27,7 @@ reboot log issue fixed.
 25/2/2017
 added adb shell
 some random bug fixed.
+
+23/3/2017
+fastboot functions added and working.
+version code changed to v1.9[beta]

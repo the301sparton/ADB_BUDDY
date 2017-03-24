@@ -7,6 +7,8 @@ to identify the correct device specific code.
 you can contribute by adding more devices and their fastboot specific code
 to the file.
 */
+
+
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,12 +34,11 @@ class fastboot_device
 private: 
 char bstr[250];
 public:
-fastboot_device()
-{
+fastboot_device()   {
     strcpy(bstr,"fastboot -i ");
 }
-void flog(char str[])
-{
+    
+void flog(char str[])   {
 	FILE *fp;
 	fp=fopen("log-ADB_BUDDY.log","a+");
 	char buff[20];
@@ -48,13 +49,15 @@ void flog(char str[])
 	fprintf(fp,"%s -- %s\n",buff,str);
 	fclose(fp);
 }
-void fastboot_mode()
-{
-	system("adb reboot bootloader");
+    
+void fastboot_mode()    {
+    char str[25];
+    strcpy(str,"adb reboot bootloader");
+	system(str);
+    flog(str);
 	cout<<"DEVICE IN FASTBOOT MODE!\nHAVE CATUTION\n\n";
 	fgetcho();
 }
-
 
 void unlockflashing()  {
 	/*
@@ -139,9 +142,32 @@ void sideload()   {
     flog(bstrcp);
 }
 
+void format()   {
+    int choice;
+    char bstrcp[250];
+    strcpy(bstrcp,bstr);
+    cout<<"Select partition you want to format\n ";
+    cout<<"system[1]\nuserdata[2]\ncache[3]\nrecovery[4]\n";
+    cout<<"choice: ";
+    cin>>choice;
+    strcat(bstrcp," format ");
+    if(choice==1)   {
+        strcat(bstrcp,"system");
+    }
+    if(choice==2)   {
+        strcat(bstrcp,"userdata");
+    }
+    if(choice==3)   {
+        strcat(bstrcp,"cache");
+    }
+    if(choice==4)   {
+        strcat(bstrcp,"recovery");
+    }
+    system(bstrcp);
+    flog(bstrcp);  
+}
 
-void fgetcho()
-{
+void fgetcho()  {
 	char getstr[10];
 	char devicecho[15];
 	char device[15];
@@ -167,6 +193,8 @@ void fgetcho()
 	}
 	else
 	{
+        do
+        {
 		int cho;
         strcat(bstr,getstr);
 		cout<<"Unlock Bootloader? [1]\n";
@@ -175,7 +203,8 @@ void fgetcho()
 		cout<<"Flash BOOT? [4]\n";
 		cout<<"Flash RECOVERY? [5]\n";
 		cout<<"LOCK FLASHING? [6]\n";
-		cout<<"SIDELOAD? [7]\n";
+        cout<<"Format a partition[7]";
+		cout<<"SIDELOAD? [8]\n";
         cout<<"$";
 		cin>>cho;
 			if(cho==1)
@@ -204,9 +233,18 @@ void fgetcho()
 			}
 			else if(cho==7)
 			{
+				format();
+			}
+            else if(cho==8)
+			{
 				sideload();
 			}
-	}
+            else
+            {
+                break;
+            }
+	}while(1);
+    }
 }
 
 };

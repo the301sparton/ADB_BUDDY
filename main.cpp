@@ -34,7 +34,7 @@ void getcho()
 		}
 		else if(cho==4)
 		{
-            		fastboot_device plus;
+            fastboot_device plus;
 			plus.fastboot_mode();   //fastboot mode
 		}
 		else if(cho==5)

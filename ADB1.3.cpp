@@ -1,3 +1,10 @@
+/*
+This file is supposed to contain ADB related code which is NOT
+device specific and can be used for any device.
+contribute in form of ideas or contribute directly with modules.
+*/
+
+
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -79,14 +86,6 @@ class device
 		system(str);
 		logit(str);
 	}
-	void breboot()
-	{
-		char str[23]={"adb reboot bootloader"};
-		system(str);
-		system("fastboot devices");
-		system("fastboot flashing get_unlock_ability");
-		logit(str);
-	}
 	void install()
 	{
 		char str[100]="adb install",cho,apkloc[100];
@@ -152,6 +151,7 @@ class device
 			char cmd[200]="adb shell ";
 			strcat(cmd,get);
 			system(cmd);
+            logit(cmd);
 		}
 	}
 };
